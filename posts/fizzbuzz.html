@@ -3,11 +3,11 @@
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Research Methodology</title>
+<title>Generalisation of FizzBuzz Problem</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="Research Methodology"/>
+<meta name="title" content="Generalisation of FizzBuzz Problem"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-11-01T17:25+0800"/>
+<meta name="generated" content="2014-11-01T18:25+0800"/>
 <meta name="author" content="Caleb"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -210,95 +210,338 @@ for the JavaScript code below.
 </div>
 
 <div id="content">
-<h1 class="title">Research Methodology</h1>
+<h1 class="title">Generalisation of FizzBuzz Problem</h1>
 
-<p>In the study of economy, 
-we have this old maxim: 
-people response to incentives, and the rest is commentaries. 
-Indeed, self-interest is the mechanism 
-behind Adam Smith’s invisible hand, 
-the axiom of John von Neumann and 
-Oskar Morgenstern’s game theoretic approach to economy, 
-as well as the foundation of modern behavioral finance. 
-Should there is a strand of idea 
-that weave together all the aspects of research activity, 
-I believe it must be : 
-care only for the truth, and the rest is commentaries.
+<p>The original FizzBuzz problem is to write a function that takes a natural number \(n\) 
+and return "Fizz", "Buzz", or \(n\) itself depends on whether \(n\) is divisible by 3, 5, both of them, and neither of them.
+\[
+f(n) = 
+\begin{cases}
+\text{Fizz} & \text{ if } n \% 3=0 \\
+\text{Buzz} & \text{ if } n \% 5=0 \\
+\text{FizzBuzz} & \text{ if } n\%3=0 \text{ and } n\%5=0 \\
+n & \text{otherwise}
+\end{cases}
+\]
+It can be easily genaralised to:
+\[
+f(n) = 
+\begin{cases}
+output_1 & \text{ if } condition_1 \\
+output_2 & \text{ if } condition_2 \\
+...\\
+output_n & \text{ if } condition_n \\
+output_{n+1} & \text{otherwise}
+\end{cases}
+\]
+
+The most natural solution is:
 </p>
+
+
+
+<pre class="example">def fizzbuzz1(n):
+    if n%3==0 and n%5==0:
+        return "FizzBuzz"
+    elif n%5==0:
+        return "Buzz"
+    elif n%3==0:
+        return "Fizz"
+    else:
+        return n    
+</pre>
+
+
 <p>
-If all we care about is the truth, 
-why do we commit plagiarism, 
-why do we tint our research result, 
-why do we produce low quality research 
-and why the issue of trustworthiness is even brought up to the table. 
-Is it not because we allow our personal ambition, 
-yearning for approval, 
-proffessional career, 
-the pressure to publish and 
-maybe the prospect of getting more funding 
-to be placed in front of our care for truth. 
-No doubt, these are all very real and pragmatic problems 
-that not any dose of idealism can hope to solve. 
-However, I wish to address two questions under the light of the care for truth:
+The problems of this solution are
 </p>
 <ol>
-<li>What are the basic process of research, study, and thinking in the broadest sense?
+<li>The order of the conditions is significant. 
 </li>
-<li>In what sense the reinterpratation of data contains high originality?
+</ol>
+
+<p>Suppose we test for the divisibility of individual digit
+before both of them, we would not get "FizzBuzz" at all.
+</p><ol>
+<li>The conditions of divisible by 3 and that by 5 sometime are tested twice.
 </li>
 </ol>
 
 
 <p>
-In signal processing, 
-we use Fourier or wavelet analysis 
-to break down and understand the complex signal; 
-in programming, 
-we break down a complicated specification 
-into simpler modules only to assemble them into bigger programs later; 
-in physic, we study the most basic particle in order to build the Grand Unified Theory. 
-It is the core of scientific method 
-to analyze a complex phenomena or system by 
-decomposing it into simpler parts which we know more about, 
-or at least easier to investigate, 
-and synthesize our understanding from these parts. 
-The synthesize process often involving gathering data from different sources, 
-putting them together to look for patterns and 
-finally we might gain some knowledge by 
-incorporating them into a bigger framework 
-or building a theory to explain them. 
-Analysis and synthesis are the basic building block of research.
+With a little number theory, the first condition can be simplify to \(n\%15=0\) 
+as shown in **fizzbuzz2** and the second problem will be gone.
+It is simple in this case to construct a simple condition that is the conjunction of two others.
+However it will be more difficult when we generalise the problem and there are more condtions to be considered, 
+in which case the number of combination of conditions will increase exponentially and the hope of finding
+a simpler condition which is equivalent to the combination will decrease exponentially.
+</p>
+
+
+
+<pre class="example">def fizzbuzz2(n):
+    if n%15==0:
+        return "FizzBuzz"
+    elif n%5==0:
+        return "Buzz"
+    elif n%3==0:
+        return "Fizz"
+    else:
+        return n
+</pre>
+
+
+<p>
+The decision flow of the program can be visualised by the tree below
 </p>
 <p>
-Now we turn our attention to study, take reading for a concrete example. For
-the first time when we read a book, we look at its title and flip around to know
-whether it is about aerodynamic, baseball, cat grooming, or other topics. 
-We then go through its table of content to get a sense of its overall organization. 
-In other word, we analyze the book. 
-The raw texts are the data to be interpreted and 
-parsed into the form of information, meaning, facts, an arguments. 
-As a reader, we have to organize them 
-in a coherent way to form our own understanding of the book. 
-This is the synthesis part.
+<img src="../images/ltree.png"  alt="../images/ltree.png" />
 </p>
 <p>
-It is in the sense of our parallel description of research and study that they are
-similar. The main difference is the product of synthesis. For research, it is a new
-understanding; for study, it is an existing understanding. However, this is a differ-
-ence without distinction. If we really care about the truth, our first concern must
-be the validity of our own understanding. In other words, we must examine our
-own understanding. To examine our own understanding, we must break it apart
-and put it back together again, differently. Take the famous equation \(E = mc^2\)
-for example, if we only rearrange the equation into \(m = E/c^2\) , we have changed our
-perspective from how to make an atomic bomb to the deep theory about the origin of mass. 
+And the tree can be rebalanced as below
 </p>
 <p>
-By applying analysis and synhesis to our own understanding, 
-we might not add anything new to the human knowledge, 
-but we have changed its shape and all are not the same again.
-Thus the reinterpretation of data in the previous sense contains high originality. 
-In fact, it is the paradigm change that might only explain the same things differently initially, 
-but at the end, it allow us to see new things that we cannot even begin to imagine.
+<img src="../images/btree.png"  alt="../images/btree.png" />
+</p>
+<p>
+Translating directly from the tree, we can write the function in a highly nested form.
+</p>
+
+
+
+<pre class="example">def fizzbuzz3(n):
+    if n%3==0:
+        if n%5==0:
+            return "FizzBuzz"
+        else:
+            return "Fizz"
+    else:
+        if n%5==0:
+            return "Buzz"
+        else:
+            return n
+</pre>
+
+
+<p>
+If we disregard efficientcy, the function can be rewritten in a symetrical form in the sense that
+the if clauses can be rearranged at will.
+</p>
+
+
+
+<pre class="example">def fizzbuzz4(n):
+    if n%3==0 and n%5==0:
+        return "FizzBuzz"
+    if n%5==0 and n%3!=0:
+        return "Buzz"
+    if n%3==0 and n%5!=0:
+        return "Fizz"
+    if n%3!=0 and n%5!=0:
+        return n
+</pre>
+
+
+<p>
+In fact **fizzbuzz3** is the most natural way to write the function given the problem is expressed in the
+term of a binary decision tree. But the highly nested structure prevents us from generalising
+the solution into problem involved more than 2 conditions.
+</p>
+<p>
+**fizzbuzz4** offers us a natural way to generalise the solution. We just have to add more if-clauses. 
+Besides being extremely tedious, for if there are \(n\) conditions, then we need to write \(n\) if-clauses
+to cover all the cases. Not the mention it is highly inefficient to test for the same condition 
+over and over again and disregard the fact that \(n\%k=0\) and \(n\%k \neq 0\) is mutually exclusive.
+</p>
+<p>
+We can do better by thinking in a functional way. The function \(f\) can be viewed as a series of transformation:
+</p>
+
+
+\[
+n \rightarrow (n\%3==0,\text{ }n\%5==0)::(boolean,boolean) \rightarrow result
+\]
+
+<p>
+The input \(n\) is transformed into a pair of boolean value indicated which condition is satisfied by it. 
+The output of the function can be characterised as a direct mapping from the boolean pair into the desired output value.
+**fizzbuzz5** implements the idea above. 
+</p>
+
+
+
+<pre class="example">def fizzbuzz5(n):
+    booleanArray = ["0","0"]
+    mapping = {"11":"FizzBuzz",
+               "10":"Fizz",
+               "01":"Buzz",
+               "00": n}
+    if n%3 == 0:
+        booleanArray[0] = "1"
+    if n%5 == 0:
+        booleanArray[1] = "1"
+    index = "".join(booleanArray)    
+    return mapping[index]
+</pre>
+
+
+<p>
+The function can be easily generalised by using booleanArray of more that 2 elements,
+adding more item into the mapping, and add more if-clauses. The benefit of **fizzbuzz5** is that if there are \(n\) basic conditions, and all the conditions are generated by the various combination of these basic combination, we only have to write
+\(n\) if-clauses. Whereas **fizzbuzz4** would require \(2^n\) if-clauses, the depth of **fizzbuzz3** would be of order \(n\), and **fizzbuzz2** as well as **fizzbuzz1** can't be generalised easily.
+</p>
+<p>
+However, the mapping of booleanArray to the desired value still consists of \(2^n\) values.
+This condition can't be improved if the desired values are independent from each other.
+In this case, however, the result can be seen as a combination of some basic result, i.e.
+the 2 basic results are "Fizz" and "Buzz", and the other result is the concatenation of the 2 strings.
+In other word, the problem can be simplified if
+there are some basic conditions, their corresponding basic desired output 
+and the result of the combination of basic conditions is also 
+the combination of basic desired output.
+</p>
+<p>
+In symbol:
+</p>
+
+
+\[
+\begin{align}
+c_1 &\rightarrow o_1 \\ 
+c_2 &\rightarrow o_2 \\
+&...\\
+c_n &\rightarrow o_n \\ 
+
+(((c_i \wedge c_j) \wedge ...) \wedge c_k) &\rightarrow (((o_i \oplus o_j) \oplus ...) \oplus o_k)
+\end{align}
+\]
+
+\(c_i \wedge c_j\) denotes the conjunction of \(c_i\) and \(c_j\), i.e. (\(a\) and \(b\)). \(o_i \oplus o_j\) denotes the combination of output \(o_i\) and \(o_j\)
+<p>
+Imagine that, given a number \(n\), we scan through the conditions and build up the desired output according to which conditions are satisfied by \(n\).
+</p>
+<p>
+In the following code, \(\oplus\) is just string concatenation.
+</p>
+
+
+
+<pre class="example">def fizzbuzz6(n):
+    result = ""
+    if n%3==0:
+        result += "Fizz"
+    if n%5==0:
+        result += "Buzz"
+    if result == "":
+        result = n
+    return result    
+</pre>
+
+
+<p>
+We can refactor the code and get a more general solution.
+</p>
+<p>
+We represent the conditions by functions:
+</p>
+
+
+
+<pre class="example">def c1(n):
+    return n % 3 == 0
+def c2(n):
+    return n % 5 == 0
+</pre>
+
+
+<p>
+Similarly for the output:
+</p>
+
+
+
+<pre class="example">def o1():
+    return "Fizz"
+def o2():
+    return "Buzz"
+</pre>
+
+
+<p>
+Collect the basic conditions and outputs into a mapping.
+</p>
+
+
+
+<pre class="example">from collections import OrderedDict
+cePair = OrderedDict({c1:o1,
+                      c2:o2})
+</pre>
+
+
+<p>
+Define the appropriate \(combine\) function
+</p>
+
+
+
+<pre class="example">def combine(x,y):
+    try:
+        return x + y
+    except TypeError:
+        return y
+</pre>
+
+
+<p>
+And finally the function can be written as:
+</p>
+
+
+
+<pre class="example">def fizzbuzz7(n):
+    initial = n
+    for c, e in cePair.items():
+        if c(n):
+            initial = combine(initial,e())
+    return initial
+</pre>
+
+
+<p>
+Now the fizzbuzz function can be generalized to
+including more conditions and results
+by just adding more elements into 
+the list <code>cePair</code>, without having to touch
+the function body.
+</p>
+<p>
+Just to show that all versions of the function are the same:
+</p>
+
+
+
+<pre class="example">list1 = [fizzbuzz1(x) for x in range(1,101)]
+list2 = [fizzbuzz2(x) for x in range(1,101)]
+list3 = [fizzbuzz3(x) for x in range(1,101)]
+list4 = [fizzbuzz4(x) for x in range(1,101)]
+list5 = [fizzbuzz5(x) for x in range(1,101)]
+list6 = [fizzbuzz6(x) for x in range(1,101)]
+list7 = [fizzbuzz7(x) for x in range(1,101)]
+
+assert list1 == list2
+assert list2 == list3
+assert list3 == list4
+assert list4 == list5
+assert list6 == list7
+</pre>
+
+
+<p>
+This blog post is also in the form of
+a ipython notebook. 
+You can view and download the notebook 
+<a href="http://nbviewer.ipython.org/github/catethos/notebooks/blob/master/Generalisation of FizzBuzz.ipynb">here</a>.
 </p></div>
 
 <div id="postamble">

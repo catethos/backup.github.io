@@ -7,13 +7,13 @@
 }
 
 body{
-   }
+    width:800px;
+    margin:0 auto;
+}
 
 #content {
     background-color:white;
     border: 0px dotted;
-    margin: 0 auto;
-    width:800px;
     padding:0px;
 }
 
