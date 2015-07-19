@@ -1,65 +1,94 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Refine, Reflect, and Refactor</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Refine, Reflect, and Refactor"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-11-01T17:25+0800"/>
-<meta name="author" content="Caleb"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2015-04-25 Sat 16:11 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Caleb" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="/style.css" type="text/css" />
+</style>
+<link rel="stylesheet" href="style.css" type="text/css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -106,55 +135,54 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-
-<div id="preamble">
-<h1 id="headline">Categorical Ethos</h1>
+<div id="preamble" class="status">
+<link rel="stylesheet" href="style.css" type="text/css">
+                         <h1 id="headline">Categorical Ethoses</h1>
                          <ul id="nav"> 
                          <li><a href="/">HOME</a></li>
                          <li><a href="https://github.com/catethos/">GITHUB</a></li>
                          </ul>
-                         
 </div>
-
 <div id="content">
 <h1 class="title">Refine, Reflect, and Refactor</h1>
-
-<p>Today I have read the book "Show Your Work" by Austin Kleon,
+<p>
+Today I have read the book "Show Your Work" by Austin Kleon,
 the very same author who brought us "Steal Like an Artist". 
 Following the tradition of his previous book, 
 the author serves us nuggets of advices,
 One of them that particularly 
 resonates with me is: 
 </p>
-<blockquote>
 
-<p>Become a documentarian of what you do.
+
+<blockquote>
+<p>
+Become a documentarian of what you do.
 </p>
 </blockquote>
-
 
 <p>
 In the context of exposing yourself to the world, 
 which is the theme of this book, 
 the documentation of your working process serves 2 purposes:
 </p>
-<ul>
+
+<ul class="org-ul">
 <li>By far it is a superior way to showcase your work
-   and your contributions than a traditional resume.
+and your contributions than a traditional resume.
 </li>
 <li>It is also the source of materials that you want to share
-   with the world in order to be known. 
+with the world in order to be known. 
 </li>
 </ul>
-
 
 <p>
 However in this blog post, I am going to focus on its role
 in self development, in improving ourselves in general.
 </p>
+
 <p>
 It is not a secret that writing down our though 
 will help us to think clearer. Genius like 
@@ -163,9 +191,11 @@ full of his casual observations, beautiful sketches,
 riddles, meditations and a wide range of other writings.
 </p>
 
+
 <div class="figure">
-<p><img src="../images/notebook.jpg" alt="cat/spider image" width="50%" /></p>
-<p>Da Vinci's Notebook</p>
+<p><img src="../images/notebook.jpg" alt="notebook.jpg" />
+</p>
+<p><span class="figure-number">Figure 1:</span> Da Vinci's Notebook</p>
 </div>
 
 <p>
@@ -178,17 +208,18 @@ writing down clearly his thoughts,
 which lead to hundreds of scientific papers 
 archived in <a href="http://www.cs.utexas.edu/users/EWD/">EWD Archieve</a>.
 </p>
-<blockquote>
 
-<p>You think you know when you learn, are more sure when you 
+<blockquote>
+<p>
+You think you know when you learn, are more sure when you 
 can write, even more when you can teach, but certain 
 when you can program.
 </p>
+
 <p>
 ~ Alan Perlis
 </p>
 </blockquote>
-
 
 <p>
 Writing things down forces us to reflect on our thinking process,
@@ -206,6 +237,7 @@ and by refactoring the program our understanding goes
 even deeper. Notice that our understanding is spiraling up,
 as a effect of constant writing and refactoring.
 </p>
+
 <p>
 We can observe the same pattern in many other different areas.
 For example, internal emotional mastery begin with 
@@ -213,20 +245,21 @@ noticing the inner experiences and to be able to
 articulate them in such a way to gain some conscious 
 control over them.     
 </p>
-<blockquote>
 
-<p>Become aware of internal, subjective sub-verbal experiences, 
+<blockquote>
+<p>
+Become aware of internal, subjective sub-verbal experiences, 
 so that these experiences can be brought into the
 world of abstraction, of conversation, of naming, etc.,
 with the consequence of that it immediately becomes possible
 for a certain amount of control to be exerted
 over these hither unconscious and uncontrollable processes.
 </p>
+
 <p>
 ~ Abraham Maslow
 </p>
 </blockquote>
-
 
 <p>
 This is what education is all about: to be able
@@ -235,35 +268,36 @@ to break down our old understanding and
 build up a new understanding;
 to refactor our thinking.
 </p>
-<blockquote>
 
-<p>I would define intellectual elegance
+<blockquote>
+<p>
+I would define intellectual elegance
 as a mind that is continually refine
 itself with education and knowledge.
 </p>
+
 <p>
 ~ Massimo Vignelli
 </p>
 </blockquote>
 
-
 <p>
 In general, this is how we improve our life.
 </p>
-<blockquote>
 
-<p>At every moment, step by step, 
+<blockquote>
+<p>
+At every moment, step by step, 
 one must confront what one is thinking and what one is doing,
 with what one is.
 </p>
+
 <p>
 ~ Michel Foucalt
 </p>
 </blockquote>
-
 </div>
-
-<div id="postamble">
+<div id="postamble" class="status">
 <div id='disqus_thread'></div>
                           <script type='text/javascript'>
                           /** CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE***/
@@ -271,7 +305,7 @@ with what one is.
                           /*** DON'T EDIT BELOW THIS LINE***/
                           (function() {
                               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                               if (window.location.pathname != '/'){
                               (document.getElementsByTagName('body')[0]).appendChild(dsq)};
                           })();

@@ -1,65 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Generalisation of FizzBuzz Problem</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="Generalisation of FizzBuzz Problem"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-11-01T18:25+0800"/>
-<meta name="author" content="Caleb"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<title>Generalisation of The FizzBuzz Problem</title>
+<!-- 2015-04-25 Sat 16:15 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Caleb" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" href="/style.css" type="text/css" />
+</style>
+<link rel="stylesheet" href="style.css" type="text/css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -106,57 +135,8 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
-/**
- *
- * @source: http://orgmode.org/mathjax/MathJax.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- * Copyright (C) 2012-2013  MathJax
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- */
-
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code below.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code below is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code below.
-*/
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
     MathJax.Hub.Config({
         // Only one of the two following lines, depending on user settings
@@ -199,33 +179,37 @@ for the JavaScript code below.
 </script>
 </head>
 <body>
-
-<div id="preamble">
-<h1 id="headline">Categorical Ethos</h1>
+<div id="preamble" class="status">
+<link rel="stylesheet" href="style.css" type="text/css">
+                         <h1 id="headline">Categorical Ethoses</h1>
                          <ul id="nav"> 
                          <li><a href="/">HOME</a></li>
                          <li><a href="https://github.com/catethos/">GITHUB</a></li>
                          </ul>
-                         
 </div>
-
 <div id="content">
-<h1 class="title">Generalisation of FizzBuzz Problem</h1>
-
-<p>The original FizzBuzz problem is to write a function that takes a natural number \(n\) 
+<h1 class="title">Generalisation of The FizzBuzz Problem</h1>
+<p>
+The original FizzBuzz problem is to write a function that takes a natural number \(n\) 
 and return "Fizz", "Buzz", or \(n\) itself depends on whether \(n\) is divisible by 3, 5, both of them, and neither of them.
+</p>
+
+<p>
 \[
 f(n) = 
+</p>
 \begin{cases}
 \text{Fizz} & \text{ if } n \% 3=0 \\
 \text{Buzz} & \text{ if } n \% 5=0 \\
 \text{FizzBuzz} & \text{ if } n\%3=0 \text{ and } n\%5=0 \\
 n & \text{otherwise}
 \end{cases}
+<p>
 \]
 It can be easily genaralised to:
 \[
 f(n) = 
+</p>
 \begin{cases}
 output_1 & \text{ if } condition_1 \\
 output_2 & \text{ if } condition_2 \\
@@ -233,163 +217,179 @@ output_2 & \text{ if } condition_2 \\
 output_n & \text{ if } condition_n \\
 output_{n+1} & \text{otherwise}
 \end{cases}
+<p>
 \]
+</p>
 
+<p>
 The most natural solution is:
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def fizzbuzz1(n):
-    if n%3==0 and n%5==0:
-        return "FizzBuzz"
-    elif n%5==0:
-        return "Buzz"
-    elif n%3==0:
-        return "Fizz"
-    else:
-        return n    
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">fizzbuzz1</span>(n):
+    <span style="color: #F92672;">if</span> n%3==0 <span style="color: #F92672;">and</span> n%5==0:
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"FizzBuzz"</span>
+    <span style="color: #F92672;">elif</span> n%5==0:
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Buzz"</span>
+    <span style="color: #F92672;">elif</span> n%3==0:
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Fizz"</span>
+    <span style="color: #F92672;">else</span>:
+    <span style="color: #F92672;">return</span> n
 </pre>
-
+</div>
 
 <p>
 The problems of this solution are
 </p>
-<ol>
+
+<ol class="org-ol">
 <li>The order of the conditions is significant. 
 </li>
 </ol>
-
-<p>Suppose we test for the divisibility of individual digit
+<p>
+Suppose we test for the divisibility of individual digit
 before both of them, we would not get "FizzBuzz" at all.
-</p><ol>
+</p>
+<ol class="org-ol">
 <li>The conditions of divisible by 3 and that by 5 sometime are tested twice.
 </li>
 </ol>
 
-
 <p>
 With a little number theory, the first condition can be simplify to \(n\%15=0\) 
-as shown in **fizzbuzz2** and the second problem will be gone.
+as shown in <b><b>fizzbuzz2</b></b> and the second problem will be gone.
 It is simple in this case to construct a simple condition that is the conjunction of two others.
 However it will be more difficult when we generalise the problem and there are more condtions to be considered, 
 in which case the number of combination of conditions will increase exponentially and the hope of finding
 a simpler condition which is equivalent to the combination will decrease exponentially.
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def fizzbuzz2(n):
-    if n%15==0:
-        return "FizzBuzz"
-    elif n%5==0:
-        return "Buzz"
-    elif n%3==0:
-        return "Fizz"
-    else:
-        return n
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">fizzbuzz2</span>(n):
+    <span style="color: #F92672;">if</span> n%15==0:
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"FizzBuzz"</span>
+    <span style="color: #F92672;">elif</span> n%5==0:
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Buzz"</span>
+    <span style="color: #F92672;">elif</span> n%3==0:
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Fizz"</span>
+    <span style="color: #F92672;">else</span>:
+    <span style="color: #F92672;">return</span> n
 </pre>
-
+</div>
 
 <p>
 The decision flow of the program can be visualised by the tree below
 </p>
-<p>
-<img src="../images/ltree.png"  alt="../images/ltree.png" />
+
+
+<div class="figure">
+<p><img src="../images/ltree.png" alt="ltree.png" />
 </p>
+</div>
+
 <p>
 And the tree can be rebalanced as below
 </p>
-<p>
-<img src="../images/btree.png"  alt="../images/btree.png" />
+
+
+<div class="figure">
+<p><img src="../images/btree.png" alt="btree.png" />
 </p>
+</div>
+
 <p>
 Translating directly from the tree, we can write the function in a highly nested form.
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def fizzbuzz3(n):
-    if n%3==0:
-        if n%5==0:
-            return "FizzBuzz"
-        else:
-            return "Fizz"
-    else:
-        if n%5==0:
-            return "Buzz"
-        else:
-            return n
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">fizzbuzz3</span>(n):
+    <span style="color: #F92672;">if</span> n%3==0:
+    <span style="color: #F92672;">if</span> n%5==0:
+        <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"FizzBuzz"</span>
+    <span style="color: #F92672;">else</span>:
+        <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Fizz"</span>
+    <span style="color: #F92672;">else</span>:
+    <span style="color: #F92672;">if</span> n%5==0:
+        <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Buzz"</span>
+    <span style="color: #F92672;">else</span>:
+        <span style="color: #F92672;">return</span> n
 </pre>
-
+</div>
 
 <p>
 If we disregard efficientcy, the function can be rewritten in a symetrical form in the sense that
 the if clauses can be rearranged at will.
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def fizzbuzz4(n):
-    if n%3==0 and n%5==0:
-        return "FizzBuzz"
-    if n%5==0 and n%3!=0:
-        return "Buzz"
-    if n%3==0 and n%5!=0:
-        return "Fizz"
-    if n%3!=0 and n%5!=0:
-        return n
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">fizzbuzz4</span>(n):
+    <span style="color: #F92672;">if</span> n%3==0 <span style="color: #F92672;">and</span> n%5==0:
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"FizzBuzz"</span>
+    <span style="color: #F92672;">if</span> n%5==0 <span style="color: #F92672;">and</span> n%3!=0:
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Buzz"</span>
+    <span style="color: #F92672;">if</span> n%3==0 <span style="color: #F92672;">and</span> n%5!=0:
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Fizz"</span>
+    <span style="color: #F92672;">if</span> n%3!=0 <span style="color: #F92672;">and</span> n%5!=0:
+    <span style="color: #F92672;">return</span> n
 </pre>
-
+</div>
 
 <p>
-In fact **fizzbuzz3** is the most natural way to write the function given the problem is expressed in the
+In fact <b><b>fizzbuzz3</b></b> is the most natural way to write the function given the problem is expressed in the
 term of a binary decision tree. But the highly nested structure prevents us from generalising
 the solution into problem involved more than 2 conditions.
 </p>
+
 <p>
-**fizzbuzz4** offers us a natural way to generalise the solution. We just have to add more if-clauses. 
+<b><b>fizzbuzz4</b></b> offers us a natural way to generalise the solution. We just have to add more if-clauses. 
 Besides being extremely tedious, for if there are \(n\) conditions, then we need to write \(n\) if-clauses
 to cover all the cases. Not the mention it is highly inefficient to test for the same condition 
 over and over again and disregard the fact that \(n\%k=0\) and \(n\%k \neq 0\) is mutually exclusive.
 </p>
+
 <p>
 We can do better by thinking in a functional way. The function \(f\) can be viewed as a series of transformation:
 </p>
 
-
+<p>
 \[
 n \rightarrow (n\%3==0,\text{ }n\%5==0)::(boolean,boolean) \rightarrow result
 \]
+</p>
 
 <p>
 The input \(n\) is transformed into a pair of boolean value indicated which condition is satisfied by it. 
 The output of the function can be characterised as a direct mapping from the boolean pair into the desired output value.
-**fizzbuzz5** implements the idea above. 
+<b><b>fizzbuzz5</b></b> implements the idea above. 
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def fizzbuzz5(n):
-    booleanArray = ["0","0"]
-    mapping = {"11":"FizzBuzz",
-               "10":"Fizz",
-               "01":"Buzz",
-               "00": n}
-    if n%3 == 0:
-        booleanArray[0] = "1"
-    if n%5 == 0:
-        booleanArray[1] = "1"
-    index = "".join(booleanArray)    
-    return mapping[index]
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">fizzbuzz5</span>(n):
+    <span style="color: #FD971F;">booleanArray</span> = [<span style="color: #E6DB74;">"0"</span>,<span style="color: #E6DB74;">"0"</span>]
+    <span style="color: #FD971F;">mapping</span> = {<span style="color: #E6DB74;">"11"</span>:<span style="color: #E6DB74;">"FizzBuzz"</span>,
+           <span style="color: #E6DB74;">"10"</span>:<span style="color: #E6DB74;">"Fizz"</span>,
+           <span style="color: #E6DB74;">"01"</span>:<span style="color: #E6DB74;">"Buzz"</span>,
+           <span style="color: #E6DB74;">"00"</span>: n}
+    <span style="color: #F92672;">if</span> n%3 == 0:
+    booleanArray[0] = <span style="color: #E6DB74;">"1"</span>
+    <span style="color: #F92672;">if</span> n%5 == 0:
+    booleanArray[1] = <span style="color: #E6DB74;">"1"</span>
+    index = <span style="color: #E6DB74;">""</span>.join(booleanArray)    
+    <span style="color: #F92672;">return</span> mapping[index]
 </pre>
-
+</div>
 
 <p>
 The function can be easily generalised by using booleanArray of more that 2 elements,
-adding more item into the mapping, and add more if-clauses. The benefit of **fizzbuzz5** is that if there are \(n\) basic conditions, and all the conditions are generated by the various combination of these basic combination, we only have to write
-\(n\) if-clauses. Whereas **fizzbuzz4** would require \(2^n\) if-clauses, the depth of **fizzbuzz3** would be of order \(n\), and **fizzbuzz2** as well as **fizzbuzz1** can't be generalised easily.
+adding more item into the mapping, and add more if-clauses. The benefit of <b><b>fizzbuzz5</b></b> is that if there are \(n\) basic conditions, and all the conditions are generated by the various combination of these basic combination, we only have to write
+\(n\) if-clauses. Whereas <b><b>fizzbuzz4</b></b> would require \(2^n\) if-clauses, the depth of <b><b>fizzbuzz3</b></b> would be of order \(n\), and <b><b>fizzbuzz2</b></b> as well as <b><b>fizzbuzz1</b></b> can't be generalised easily.
 </p>
+
 <p>
 However, the mapping of booleanArray to the desired value still consists of \(2^n\) values.
 This condition can't be improved if the desired values are independent from each other.
@@ -400,12 +400,14 @@ there are some basic conditions, their corresponding basic desired output
 and the result of the combination of basic conditions is also 
 the combination of basic desired output.
 </p>
+
 <p>
 In symbol:
 </p>
 
-
+<p>
 \[
+</p>
 \begin{align}
 c_1 &\rightarrow o_1 \\ 
 c_2 &\rightarrow o_2 \\
@@ -414,99 +416,103 @@ c_n &\rightarrow o_n \\
 
 (((c_i \wedge c_j) \wedge ...) \wedge c_k) &\rightarrow (((o_i \oplus o_j) \oplus ...) \oplus o_k)
 \end{align}
-\]
-
-\(c_i \wedge c_j\) denotes the conjunction of \(c_i\) and \(c_j\), i.e. (\(a\) and \(b\)). \(o_i \oplus o_j\) denotes the combination of output \(o_i\) and \(o_j\)
 <p>
+\]
+</p>
+
+<p>
+\(c_i \wedge c_j\) denotes the conjunction of \(c_i\) and \(c_j\), i.e. (\(a\) and \(b\)). \(o_i \oplus o_j\) denotes the combination of output \(o_i\) and \(o_j\)
 Imagine that, given a number \(n\), we scan through the conditions and build up the desired output according to which conditions are satisfied by \(n\).
 </p>
+
 <p>
 In the following code, \(\oplus\) is just string concatenation.
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def fizzbuzz6(n):
-    result = ""
-    if n%3==0:
-        result += "Fizz"
-    if n%5==0:
-        result += "Buzz"
-    if result == "":
-        result = n
-    return result    
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">fizzbuzz6</span>(n):
+    <span style="color: #FD971F;">result</span> = <span style="color: #E6DB74;">""</span>
+    <span style="color: #F92672;">if</span> n%3==0:
+    result += <span style="color: #E6DB74;">"Fizz"</span>
+    <span style="color: #F92672;">if</span> n%5==0:
+    result += <span style="color: #E6DB74;">"Buzz"</span>
+    <span style="color: #F92672;">if</span> result == <span style="color: #E6DB74;">""</span>:
+    result = n
+    <span style="color: #F92672;">return</span> result
 </pre>
-
+</div>
 
 <p>
 We can refactor the code and get a more general solution.
 </p>
+
 <p>
 We represent the conditions by functions:
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def c1(n):
-    return n % 3 == 0
-def c2(n):
-    return n % 5 == 0
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">c1</span>(n):
+    <span style="color: #F92672;">return</span> n % 3 == 0
+<span style="color: #F92672;">def</span> <span style="color: #A6E22E;">c2</span>(n):
+    <span style="color: #F92672;">return</span> n % 5 == 0
 </pre>
-
+</div>
 
 <p>
 Similarly for the output:
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def o1():
-    return "Fizz"
-def o2():
-    return "Buzz"
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">o1</span>():
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Fizz"</span>
+<span style="color: #F92672;">def</span> <span style="color: #A6E22E;">o2</span>():
+    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">"Buzz"</span>
 </pre>
-
+</div>
 
 <p>
 Collect the basic conditions and outputs into a mapping.
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">from collections import OrderedDict
-cePair = OrderedDict({c1:o1,
-                      c2:o2})
+<pre class="src src-python"><span style="color: #F92672;">from</span> collections <span style="color: #F92672;">import</span> OrderedDict
+<span style="color: #FD971F;">cePair</span> = OrderedDict({c1:o1,
+              c2:o2})
 </pre>
-
+</div>
 
 <p>
 Define the appropriate \(combine\) function
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def combine(x,y):
-    try:
-        return x + y
-    except TypeError:
-        return y
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">combine</span>(x,y):
+    <span style="color: #F92672;">try</span>:
+    <span style="color: #F92672;">return</span> x + y
+    <span style="color: #F92672;">except</span> <span style="color: #66D9EF; font-style: italic;">TypeError</span>:
+    <span style="color: #F92672;">return</span> y
 </pre>
-
+</div>
 
 <p>
 And finally the function can be written as:
 </p>
 
+<div class="org-src-container">
 
-
-<pre class="example">def fizzbuzz7(n):
-    initial = n
-    for c, e in cePair.items():
-        if c(n):
-            initial = combine(initial,e())
-    return initial
+<pre class="src src-python"><span style="color: #F92672;">def</span> <span style="color: #A6E22E;">fizzbuzz7</span>(n):
+    <span style="color: #FD971F;">initial</span> = n
+    <span style="color: #F92672;">for</span> c, e <span style="color: #F92672;">in</span> cePair.items():
+    <span style="color: #F92672;">if</span> c(n):
+        <span style="color: #FD971F;">initial</span> = combine(initial,e())
+    <span style="color: #F92672;">return</span> initial
 </pre>
-
+</div>
 
 <p>
 Now the fizzbuzz function can be generalized to
@@ -515,36 +521,37 @@ by just adding more elements into
 the list <code>cePair</code>, without having to touch
 the function body.
 </p>
+
 <p>
 Just to show that all versions of the function are the same:
 </p>
 
+<div class="org-src-container">
 
+<pre class="src src-python"><span style="color: #FD971F;">list1</span> = [fizzbuzz1(x) <span style="color: #F92672;">for</span> x <span style="color: #F92672;">in</span> <span style="color: #F92672;">range</span>(1,101)]
+<span style="color: #FD971F;">list2</span> = [fizzbuzz2(x) <span style="color: #F92672;">for</span> x <span style="color: #F92672;">in</span> <span style="color: #F92672;">range</span>(1,101)]
+<span style="color: #FD971F;">list3</span> = [fizzbuzz3(x) <span style="color: #F92672;">for</span> x <span style="color: #F92672;">in</span> <span style="color: #F92672;">range</span>(1,101)]
+<span style="color: #FD971F;">list4</span> = [fizzbuzz4(x) <span style="color: #F92672;">for</span> x <span style="color: #F92672;">in</span> <span style="color: #F92672;">range</span>(1,101)]
+<span style="color: #FD971F;">list5</span> = [fizzbuzz5(x) <span style="color: #F92672;">for</span> x <span style="color: #F92672;">in</span> <span style="color: #F92672;">range</span>(1,101)]
+<span style="color: #FD971F;">list6</span> = [fizzbuzz6(x) <span style="color: #F92672;">for</span> x <span style="color: #F92672;">in</span> <span style="color: #F92672;">range</span>(1,101)]
+<span style="color: #FD971F;">list7</span> = [fizzbuzz7(x) <span style="color: #F92672;">for</span> x <span style="color: #F92672;">in</span> <span style="color: #F92672;">range</span>(1,101)]
 
-<pre class="example">list1 = [fizzbuzz1(x) for x in range(1,101)]
-list2 = [fizzbuzz2(x) for x in range(1,101)]
-list3 = [fizzbuzz3(x) for x in range(1,101)]
-list4 = [fizzbuzz4(x) for x in range(1,101)]
-list5 = [fizzbuzz5(x) for x in range(1,101)]
-list6 = [fizzbuzz6(x) for x in range(1,101)]
-list7 = [fizzbuzz7(x) for x in range(1,101)]
-
-assert list1 == list2
-assert list2 == list3
-assert list3 == list4
-assert list4 == list5
-assert list6 == list7
+<span style="color: #F92672;">assert</span> list1 == list2
+<span style="color: #F92672;">assert</span> list2 == list3
+<span style="color: #F92672;">assert</span> list3 == list4
+<span style="color: #F92672;">assert</span> list4 == list5
+<span style="color: #F92672;">assert</span> list6 == list7
 </pre>
-
+</div>
 
 <p>
 This blog post is also in the form of
 a ipython notebook. 
 You can view and download the notebook 
-<a href="http://nbviewer.ipython.org/github/catethos/notebooks/blob/master/Generalisation of FizzBuzz.ipynb">here</a>.
-</p></div>
-
-<div id="postamble">
+<a href="http://nbviewer.ipython.org/github/catethos/notebooks/blob/master/Generalisation%20of%20FizzBuzz.ipynb">here</a>.
+</p>
+</div>
+<div id="postamble" class="status">
 <div id='disqus_thread'></div>
                           <script type='text/javascript'>
                           /** CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE***/
@@ -552,7 +559,7 @@ You can view and download the notebook
                           /*** DON'T EDIT BELOW THIS LINE***/
                           (function() {
                               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                               if (window.location.pathname != '/'){
                               (document.getElementsByTagName('body')[0]).appendChild(dsq)};
                           })();
